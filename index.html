@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KhmerGlobe.Ultra+ — Discover Cambodia & The World</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' fill='none'%3E%3Ccircle cx='20' cy='20' r='15' stroke='%2334d399' stroke-width='2.5'/%3E%3Cellipse cx='20' cy='20' rx='6.5' ry='15' stroke='%2322d3ee' stroke-width='2'/%3E%3Cpath d='M5 20H35' stroke='%2322d3ee' stroke-width='1.5'/%3E%3Cpath d='M3 28C14 38 32 30 36 11' stroke='%23fbbf24' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M36 4L39.5 11.5L32.5 11.5Z' fill='%23fbbf24'/%3E%3C/svg%3E">
+    <!-- Google Fonts Import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bayon&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN for Modern Styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                        },
+                        gold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                        khmer: ['Bayon', 'cursive', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Language Toggle Control styles */
+        [data-lang="en"] .kh-text { display: none !important; }
+        [data-lang="kh"] .en-text { display: none !important; }
+        [data-lang="kh"] h1, [data-lang="kh"] h2, [data-lang="kh"] h3, [data-lang="kh"] .font-heading {
+            font-family: 'Bayon', cursive, sans-serif !important;
+            letter-spacing: 0.5px;
+        }
+        .glass-panel {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        html[data-theme="light"] .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100" id="body-root">
+
+    <!-- Top Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-slate-800/50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2 text-xl font-extrabold font-heading tracking-tight">
+                <svg class="w-10 h-10 shrink-0" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="KhmerGlobe.Ultra+ logo" role="img">
+                    <defs>
+                        <linearGradient id="kgHeaderGrad" x1="4" y1="4" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                            <stop offset="0" stop-color="#34d399"/>
+                            <stop offset="1" stop-color="#22d3ee"/>
+                        </linearGradient>
+                    </defs>
+                    <circle cx="20" cy="20" r="15" stroke="url(#kgHeaderGrad)" stroke-width="2.5"/>
+                    <ellipse cx="20" cy="20" rx="6.5" ry="15" stroke="url(#kgHeaderGrad)" stroke-width="2"/>
+                    <path d="M5 20H35M7.5 12.5H32.5M7.5 27.5H32.5" stroke="url(#kgHeaderGrad)" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M3 28C14 38 32 30 36 11" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M36 4L39.5 11.5L32.5 11.5Z" fill="#fbbf24"/>
+                </svg>
+                <span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">KhmerGlobe<span class="text-amber-400">.Ultra+</span></span>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#destinations" class="hover:text-emerald-400 transition-colors">
+                    <span class="en-text">Destinations</span>
+                    <span class="kh-text">គោលដៅ</span>
+                </a>
+                <a href="#local-gems" class="hover:text-emerald-400 transition-colors">
+                    <span class="en-text">Local Gems</span>
+                    <span class="kh-text">កន្លែងពិសេស</span>
+                </a>
+                <a href="#global-network" class="hover:text-emerald-400 transition-colors">
+                    <span class="en-text">Global Network</span>
+                    <span class="kh-text">បណ្តាញអន្តរជាតិ</span>
+                </a>
+                <a href="#about" class="hover:text-emerald-400 transition-colors">
+                    <span class="en-text">About Us</span>
+                    <span class="kh-text">អំពីយើង</span>
+                </a>
+            </nav>
+
+            <!-- Control Buttons & CTA -->
+            <div class="flex items-center gap-3">
+                <button id="lang-toggle-btn" onclick="toggleLanguage()" class="px-3 py-1.5 rounded-full bg-slate-800/80 hover:bg-slate-700 text-xs font-semibold border border-slate-700 transition flex items-center gap-1.5 text-slate-200" title="Switch Language">
+                    🌐 <span id="lang-label">ខ្មែរ</span>
+                </button>
+                <button id="theme-toggle-btn" onclick="toggleTheme()" class="p-2 rounded-full bg-slate-800/80 hover:bg-slate-700 text-xs border border-slate-700 transition text-amber-400" title="Toggle Dark/Light Mode">
+                    <span id="theme-icon">☀️</span>
+                </button>
+                <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-semibold text-sm shadow-lg shadow-emerald-500/20 transition transform hover:-translate-y-0.5">
+                    <span class="en-text">Plan a Trip</span>
+                    <span class="kh-text">កក់ដំណើរកម្សាន្ត</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[90vh] flex items-center justify-center pt-28 pb-16 overflow-hidden bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950">
+        <!-- Background Glow Orbs -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/10 blur-[140px] rounded-full pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-[400px] h-[400px] bg-amber-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs sm:text-sm font-medium mb-6">
+                <span>🏛️</span>
+                <span class="en-text">Headquartered in Phnom Penh, Cambodia</span>
+                <span class="kh-text">ទីស្នាក់ការកណ្តាល រាជធានីភ្នំពេញ</span>
+            </div>
+
+            <!-- Main Heading -->
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold font-heading tracking-tight mb-6 leading-tight">
+                <span class="en-text">Explore The World With <br/><span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">10,000+ Destinations</span></span>
+                <span class="kh-text">ស្វែងយល់ពីពិភពលោកជាមួយ<br/><span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">គោលដៅជាង ១០,០០០</span></span>
+            </h1>
+
+            <p class="text-base sm:text-xl text-slate-400 max-w-3xl mx-auto mb-10 font-light">
+                <span class="en-text">From the mystical temples of Angkor Wat to global wonders across Asia, America, and beyond. Your journey starts with local expertise and worldwide reach.</span>
+                <span class="kh-text">ចាប់ពីប្រាសាទអង្គរវត្តដ៏អស្ចារ្យ រហូតដល់គោលដៅអន្តរជាតិជុំវិញពិភពលោក។ ដំណើរកម្សាន្តរបស់អ្នកចាប់ផ្តើមទីនេះ។</span>
+            </p>
+
+            <!-- Search Bar Filter Box -->
+            <div class="glass-panel p-4 sm:p-6 rounded-3xl shadow-2xl max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 text-left border border-slate-800">
+                <div class="space-y-1.5">
+                    <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                        <span class="en-text">Destination</span>
+                        <span class="kh-text">គោលដៅ</span>
+                    </label>
+                    <select id="destination-select" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-emerald-500 transition">
+                        <option value="all">All Destinations / ទាំងអស់</option>
+                        <optgroup label="Local Gems (កន្លែងពិសេស)">
+                            <option value="siem-reap">Siem Reap - Angkor Wat</option>
+                            <option value="phnom-penh">Phnom Penh - Capital</option>
+                            <option value="koh-kong">Koh Kong - Islands</option>
+                        </optgroup>
+                        <optgroup label="International (អន្តរជាតិ)">
+                            <option value="vietnam">Vietnam</option>
+                            <option value="laos">Laos</option>
+                            <option value="china">China</option>
+                            <option value="india">India</option>
+                            <option value="usa">USA</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <div class="space-y-1.5">
+                    <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                        <span class="en-text">Travel Style</span>
+                        <span class="kh-text">រចនាប័ទ្មទេសចរណ៍</span>
+                    </label>
+                    <select class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-emerald-500 transition">
+                        <option>Cultural Heritage / វប្បធម៌</option>
+                        <option>Luxury Adventure / ធម្មជាតិនិងផ្សងព្រេង</option>
+                        <option>Nature & Wildlife / សួនធម្មជាតិ</option>
+                        <option>Family & Group / គ្រួសារ</option>
+                    </select>
+                </div>
+                <div class="flex items-end">
+                    <button class="w-full h-[46px] rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-semibold text-sm shadow-lg shadow-emerald-500/20 transition flex items-center justify-center gap-2">
+                        <span>🔍</span>
+                        <span class="en-text">Search Trips</span>
+                        <span class="kh-text">ស្វែងរកដំណើរកម្សាន្ត</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Banner -->
+    <section class="py-12 border-y border-slate-800/80 bg-slate-900/40 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="p-4">
+                    <div class="text-3xl sm:text-4xl font-extrabold font-heading text-emerald-400 mb-1">1,000+</div>
+                    <p class="text-sm text-slate-400">
+                        <span class="en-text">Shops Worldwide</span>
+                        <span class="kh-text">សាខាទូទាំងពិភពលោក</span>
+                    </p>
+                </div>
+                <div class="p-4">
+                    <div class="text-3xl sm:text-4xl font-extrabold font-heading text-amber-400 mb-1">25 Years</div>
+                    <p class="text-sm text-slate-400">
+                        <span class="en-text">Tourism Excellence</span>
+                        <span class="kh-text">បទពិសោធន៍ទេសចរណ៍</span>
+                    </p>
+                </div>
+                <div class="p-4">
+                    <div class="text-3xl sm:text-4xl font-extrabold font-heading text-teal-400 mb-1">10,000</div>
+                    <p class="text-sm text-slate-400">
+                        <span class="en-text">Global Destinations</span>
+                        <span class="kh-text">គោលដៅទូទាំងសកល</span>
+                    </p>
+                </div>
+                <div class="p-4">
+                    <div class="text-3xl sm:text-4xl font-extrabold font-heading text-cyan-400 mb-1">100%</div>
+                    <p class="text-sm text-slate-400">
+                        <span class="en-text">Client Insurance</span>
+                        <span class="kh-text">ធានារ៉ាប់រងអតិថិជន</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Local Cambodian Gems Section -->
+    <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" id="local-gems">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="px-4 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold uppercase tracking-wider border border-emerald-500/20 inline-block mb-4">
+                <span class="en-text">Our Homeland Expertise</span>
+                <span class="kh-text">ជំនាញស្រុកកំណើតយើង</span>
+            </span>
+            <h2 class="text-3xl sm:text-5xl font-extrabold font-heading mb-4">
+                <span class="en-text">Discover Local Cambodian <span class="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">Treasures</span></span>
+                <span class="kh-text">ស្វែងយល់ត្បូងពេជ្រទេសចរណ៍<span class="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">កម្ពុជា</span></span>
+            </h2>
+            <p class="text-slate-400 text-sm sm:text-base">
+                <span class="en-text">Experience the heart of the Khmer Kingdom with exclusive local guides and insider access.</span>
+                <span class="kh-text">បទពិសោធន៍ដ៏អស្ចារ្យនៃព្រះរាជាណាចក្រកម្ពុជា ជាមួយមគ្គុទេសក៍ជំនាញក្នុងស្រុក។</span>
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Card 1: Siem Reap (real Angkor Wat photo) -->
+            <div class="glass-panel rounded-3xl overflow-hidden group hover:border-emerald-500/50 transition duration-300 flex flex-col">
+                <div class="h-64 bg-cover bg-center relative transition-transform duration-500 group-hover:scale-105" style="background-image: url('https://unsplash.com/photos/EY3tC81nFt0/download?force=true&w=800')">
+                    <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-emerald-400 text-xs font-semibold border border-slate-700">
+                        <span class="en-text">Must Visit</span>
+                        <span class="kh-text">ត្រូវតែទៅលេង</span>
+                    </span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-2xl font-bold font-heading mb-1 text-slate-100">Siem Reap</h3>
+                        <p class="text-xs text-emerald-400 font-medium mb-3">📍 Cambodia (សៀមរាប - អង្គរវត្ត)</p>
+                        <p class="text-slate-400 text-sm mb-6">
+                            <span class="en-text">Home to majestic Angkor Wat, ancient jungle temples, and vibrant night markets.</span>
+                            <span class="kh-text">ទីជម្រកប្រាសាទអង្គរវត្តដ៏អស្ចារ្យ និងផ្សាររាត្រីដ៏រស់រវើក។</span>
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+                        <span class="text-lg font-bold text-amber-400">From $350</span>
+                        <a href="#contact" class="text-sm font-semibold text-emerald-400 hover:text-emerald-300 flex items-center gap-1">
+                            <span class="en-text">Book Local Tour &rarr;</span>
+                            <span class="kh-text">កក់ដំណើរកម្សាន្ត &rarr;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Phnom Penh (real Phnom Penh city photo) -->
+            <div class="glass-panel rounded-3xl overflow-hidden group hover:border-emerald-500/50 transition duration-300 flex flex-col">
+                <div class="h-64 bg-cover bg-center relative transition-transform duration-500 group-hover:scale-105" style="background-image: url('https://unsplash.com/photos/b2ezQTN2UaQ/download?force=true&w=800')">
+                    <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-emerald-400 text-xs font-semibold border border-slate-700">
+                        <span class="en-text">Capital Vibes</span>
+                        <span class="kh-text">រាជធានីភ្នំពេញ</span>
+                    </span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-2xl font-bold font-heading mb-1 text-slate-100">Phnom Penh</h3>
+                        <p class="text-xs text-emerald-400 font-medium mb-3">📍 Cambodia HQ (ទីស្នាក់ការកណ្តាល)</p>
+                        <p class="text-slate-400 text-sm mb-6">
+                            <span class="en-text">Riverside serenity, the Royal Palace, and a booming culinary and cultural scene.</span>
+                            <span class="kh-text">ទន្លេមុខព្រះបរមរាជវាំង ព្រមទាំងម្ហូបអាហារ និងវប្បធម៌ដ៏សម្បូរបែប។</span>
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+                        <span class="text-lg font-bold text-amber-400">From $250</span>
+                        <a href="#contact" class="text-sm font-semibold text-emerald-400 hover:text-emerald-300 flex items-center gap-1">
+                            <span class="en-text">Book City Tour &rarr;</span>
+                            <span class="kh-text">កក់ដំណើរកម្សាន្ត &rarr;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Koh Kong -->
+            <div class="glass-panel rounded-3xl overflow-hidden group hover:border-emerald-500/50 transition duration-300 flex flex-col">
+                <div class="h-64 bg-cover bg-center relative transition-transform duration-500 group-hover:scale-105" style="background-image: url('https://unsplash.com/photos/TA5v7TsW-rQ/download?force=true&w=800')">
+                    <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-emerald-400 text-xs font-semibold border border-slate-700">
+                        <span class="en-text">Eco Paradise</span>
+                        <span class="kh-text">ឧទ្យានធម្មជាតិ</span>
+                    </span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-2xl font-bold font-heading mb-1 text-slate-100">Koh Kong</h3>
+                        <p class="text-xs text-emerald-400 font-medium mb-3">📍 Cambodia (កោះកុង)</p>
+                        <p class="text-slate-400 text-sm mb-6">
+                            <span class="en-text">Untouched pristine islands, mangrove river safaris, and luxury eco-lodges.</span>
+                            <span class="kh-text">កោះធម្មជាតិដ៏ស្រស់ស្អាត ព្រៃកោងកាង និងរីសតធម្មជាតិ។</span>
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+                        <span class="text-lg font-bold text-amber-400">From $420</span>
+                        <a href="#contact" class="text-sm font-semibold text-emerald-400 hover:text-emerald-300 flex items-center gap-1">
+                            <span class="en-text">Book Eco Escape &rarr;</span>
+                            <span class="kh-text">កក់ដំណើរកម្សាន្ត &rarr;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Destinations Section -->
+    <section class="py-20 bg-slate-900/60 border-t border-slate-800/80" id="destinations">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="px-4 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 text-xs font-semibold uppercase tracking-wider border border-cyan-500/20 inline-block mb-4">
+                    <span class="en-text">Global Horizons</span>
+                    <span class="kh-text">វិសាលភាពអន្តរជាតិ</span>
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold font-heading mb-4">
+                    <span class="en-text">Explore International <span class="bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">Destinations</span></span>
+                    <span class="kh-text">ស្វែងយល់គោលដៅ<span class="bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">អន្តរជាតិ</span></span>
+                </h2>
+                <p class="text-slate-400 text-sm sm:text-base">
+                    <span class="en-text">Seamlessly coordinated through our network of over 1,000 shops worldwide.</span>
+                    <span class="kh-text">សម្របសម្រួលយ៉ាងរលូនតាមរយៈបណ្តាញសាខារបស់យើងជាង ១,០០០ ទូទាំងសកលលោក។</span>
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Vietnam -->
+                <div class="glass-panel rounded-3xl overflow-hidden group hover:border-cyan-500/50 transition duration-300 flex flex-col">
+                    <div class="h-56 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style="background-image: url('https://unsplash.com/photos/QQ9vWTP3eGo/download?force=true&w=800')"></div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold font-heading mb-1 text-slate-100">Vietnam</h3>
+                            <p class="text-xs text-cyan-400 font-medium mb-3">🌏 Southeast Asia (អាស៊ីអាគ្នេយ៍)</p>
+                            <p class="text-slate-400 text-sm mb-6">Cruise Ha Long Bay, walk through Hoi An lantern streets, and taste world-class street food.</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+                            <span class="text-base font-bold text-amber-400">From $490</span>
+                            <a href="#contact" class="text-sm font-semibold text-cyan-400 hover:text-cyan-300">Explore &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Laos -->
+                <div class="glass-panel rounded-3xl overflow-hidden group hover:border-cyan-500/50 transition duration-300 flex flex-col">
+                    <div class="h-56 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style="background-image: url('https://unsplash.com/photos/hZLpIrG8Rbo/download?force=true&w=800')"></div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold font-heading mb-1 text-slate-100">Laos</h3>
+                            <p class="text-xs text-cyan-400 font-medium mb-3">🌏 Southeast Asia (អាស៊ីអាគ្នេយ៍)</p>
+                            <p class="text-slate-400 text-sm mb-6">Discover the serene temples of Luang Prabang, waterfalls, and peaceful Mekong river landscapes.</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+                            <span class="text-base font-bold text-amber-400">From $450</span>
+                            <a href="#contact" class="text-sm font-semibold text-cyan-400 hover:text-cyan-300">Explore &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- China -->
+                <div class="glass-panel rounded-3xl overflow-hidden group hover:border-cyan-500/50 transition duration-300 flex flex-col">
+                    <div class="h-56 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style="background-image: url('https://unsplash.com/photos/Q36BvLGdOAg/download?force=true&w=800')"></div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold font-heading mb-1 text-slate-100">China</h3>
+                            <p class="text-xs text-cyan-400 font-medium mb-3">🌏 East Asia (អាស៊ីខាងកើត)</p>
+                            <p class="text-slate-400 text-sm mb-6">Walk the Great Wall, view futuristic skylines in Shanghai, and explore ancient imperial history.</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+                            <span class="text-base font-bold text-amber-400">From $890</span>
+                            <a href="#contact" class="text-sm font-semibold text-cyan-400 hover:text-cyan-300">Explore &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- India -->
+                <div class="glass-panel rounded-3xl overflow-hidden group hover:border-cyan-500/50 transition duration-300 flex flex-col">
+                    <div class="h-56 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style="background-image: url('https://unsplash.com/photos/FrFQuL2on4o/download?force=true&w=800')"></div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold font-heading mb-1 text-slate-100">India</h3>
+                            <p class="text-xs text-cyan-400 font-medium mb-3">🌏 South Asia (អាស៊ីខាងត្បូង)</p>
+                            <p class="text-slate-400 text-sm mb-6">Witness the breathtaking Taj Mahal, vibrant cultural festivals, and spiritual heritage trails.</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+                            <span class="text-base font-bold text-amber-400">From $750</span>
+                            <a href="#contact" class="text-sm font-semibold text-cyan-400 hover:text-cyan-300">Explore &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- USA -->
+                <div class="glass-panel rounded-3xl overflow-hidden group hover:border-cyan-500/50 transition duration-300 flex flex-col">
+                    <div class="h-56 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style="background-image: url('https://unsplash.com/photos/3igovryaoVE/download?force=true&w=800')"></div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold font-heading mb-1 text-slate-100">USA</h3>
+                            <p class="text-xs text-cyan-400 font-medium mb-3">🌎 North America (អាមេរិកខាងជើង)</p>
+                            <p class="text-slate-400 text-sm mb-6">Experience iconic coast-to-coast adventures, from New York City's energy to national parks.</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+                            <span class="text-base font-bold text-amber-400">From $1,290</span>
+                            <a href="#contact" class="text-sm font-semibold text-cyan-400 hover:text-cyan-300">Explore &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Indochina Grand Tour -->
+                <div class="glass-panel rounded-3xl overflow-hidden group hover:border-cyan-500/50 transition duration-300 flex flex-col">
+                    <div class="h-56 bg-cover bg-center relative transition-transform duration-500 group-hover:scale-105" style="background-image: url('https://unsplash.com/photos/qZGdIs5W3LI/download?force=true&w=800')">
+                        <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-amber-500 text-slate-950 text-xs font-bold">Multi-Country</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold font-heading mb-1 text-slate-100">Indochina Grand Tour</h3>
+                            <p class="text-xs text-cyan-400 font-medium mb-3">📍 Cambodia • Vietnam • Laos</p>
+                            <p class="text-slate-400 text-sm mb-6">The ultimate multi-destination package curated seamlessly by our local alliance.</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+                            <span class="text-base font-bold text-amber-400">From $1,450</span>
+                            <a href="#contact" class="text-sm font-semibold text-cyan-400 hover:text-cyan-300">Explore &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Network Section -->
+    <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" id="global-network">
+        <div class="glass-panel rounded-3xl p-8 sm:p-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center border border-slate-800">
+            <div>
+                <span class="px-4 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold uppercase tracking-wider border border-emerald-500/20 inline-block mb-4">
+                    <span class="en-text">World-Class Alliance</span>
+                    <span class="kh-text">សម្ព័ន្ធភាពលំដាប់ពិភពលោក</span>
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold font-heading mb-6 leading-snug">
+                    <span class="en-text">Powered by <span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">1,000+ Global Partner Shops</span></span>
+                    <span class="kh-text">ដំណើរការដោយ<span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">សាខាដៃគូជាង ១,០០០</span></span>
+                </h2>
+                <p class="text-slate-400 text-sm sm:text-base mb-8">
+                    <span class="en-text">Based in Phnom Penh, KhmerGlobe.Ultra+ bridges local hospitality with a powerhouse network of over 1,000 specialized shops. Offering access to over 10,000 destinations with full comprehensive travel insurance.</span>
+                    <span class="kh-text">មានទីស្នាក់ការកណ្តាលនៅភ្នំពេញ តភ្ជាប់បដិសណ្ឋារកិច្ចក្នុងស្រុកជាមួយបណ្តាញសាខាជាង ១,០០០ និងគោលដៅជាង ១០,០០០ ព្រមទាំងធានារ៉ាប់រងពេញលេញ។</span>
+                </p>
+                <div class="space-y-3 font-medium text-sm text-slate-300">
+                    <div class="flex items-center gap-3">✅ 1,000+ Vetted Shops Worldwide</div>
+                    <div class="flex items-center gap-3">✅ 10,000+ Destinations Covered Globally</div>
+                    <div class="flex items-center gap-3">✅ Full Comprehensive Insurance Included</div>
+                </div>
+            </div>
+            <div class="bg-gradient-to-br from-slate-900 to-slate-950 p-8 rounded-2xl border border-slate-800 text-center relative overflow-hidden shadow-xl">
+                <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-emerald-500/20 blur-3xl rounded-full"></div>
+                <div class="text-5xl mb-4">🌍</div>
+                <h3 class="text-2xl font-bold font-heading mb-3 text-white">Global Synergy</h3>
+                <p class="text-slate-400 text-sm">1,000+ Shops + 10,000 Destinations + Full Insurance = Limitless Secure Travel.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 bg-slate-900/40 border-t border-slate-800/80" id="about">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="px-4 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold uppercase tracking-wider border border-emerald-500/20 inline-block mb-4">
+                <span class="en-text">Our Story</span>
+                <span class="kh-text">ប្រវត្តិរបស់យើង</span>
+            </span>
+            <h2 class="text-3xl sm:text-5xl font-extrabold font-heading mb-8">
+                <span class="en-text">From a University Vision to a <span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Global Network</span></span>
+                <span class="kh-text">ពីចក្ខុវិស័យសាកលវិទ្យាល័យទៅជា<span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">បណ្តាញសកល</span></span>
+            </h2>
+            <div class="glass-panel p-8 sm:p-12 rounded-3xl space-y-6 text-left text-slate-300 text-base sm:text-lg leading-relaxed border border-slate-800">
+                <p>
+                    <span class="en-text">KhmerGlobe.Ultra+ was originally launched in <strong>2001</strong> by a visionary student at <strong>Build Bright University (BBU)</strong> in Phnom Penh, Cambodia. What started as a passionate local student project with a dream to showcase Cambodia's rich cultural heritage to the world has blossomed into an extraordinary international travel agency.</span>
+                    <span class="kh-text">KhmerGlobe.Ultra+ ត្រូវបានបង្កើតឡើងដំបូងក្នុងឆ្នាំ <strong>២០០១</strong> ដោយនិស្សិតមកពី <strong>សាកលវិទ្យាល័យ បៀលប្រាយ (BBU)</strong> រាជធានីភ្នំពេញ ដែលមានបំណងបង្ហាញវប្បធម៌ខ្មែរទៅកាន់ពិភពលោក។</span>
+                </p>
+                <p>
+                    <span class="en-text">Today, we proudly operate over <strong>1,000 shops</strong> around the globe, connecting travelers to more than <strong>10,000 breathtaking destinations</strong> worldwide. Every single client booking with us receives full <strong>comprehensive travel insurance coverage</strong>, ensuring total peace of mind wherever your adventures take you.</span>
+                    <span class="kh-text">បច្ចុប្បន្នយើងមានសាខាជាង <strong>១,០០០</strong> ជុំវិញពិភពលោក និងគោលដៅទេសចរណ៍ជាង <strong>១០,០០០</strong> ជាមួយការធានារ៉ាប់រងសុវត្ថិភាពពេញលេញ។</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section / Plan a Trip -->
+    <section class="py-20 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8" id="contact">
+        <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-slate-800 shadow-2xl">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-extrabold font-heading mb-3">
+                    <span class="en-text">Start Planning Your Next Journey</span>
+                    <span class="kh-text">ចាប់ផ្តើមរៀបចំដំណើរកម្សាន្ត</span>
+                </h2>
+                <p class="text-slate-400 text-sm">Connect with our expert travel designers in Phnom Penh or visit any of our 1,000+ shops worldwide.</p>
+            </div>
+            <form class="space-y-4" onsubmit="event.preventDefault(); alert('Inquiry sent successfully! Our Phnom Penh team will contact you shortly.');">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <input type="text" placeholder="Your Full Name / ឈ្មោះពេញ" required class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-emerald-500 transition">
+                    <input type="email" placeholder="Your Email Address / អ៊ីមែល" required class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-emerald-500 transition">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <select class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-emerald-500 transition">
+                        <option>Select Preferred Destination</option>
+                        <option>Siem Reap - Angkor Wat</option>
+                        <option>Phnom Penh</option>
+                        <option>Koh Kong</option>
+                        <option>Vietnam</option>
+                        <option>Laos</option>
+                        <option>China</option>
+                        <option>India</option>
+                        <option>USA</option>
+                        <option>Multi-Country Package</option>
+                    </select>
+                    <input type="text" placeholder="Estimated Travel Date / កាលបរិច្ឆេទ" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-emerald-500 transition">
+                </div>
+                <textarea rows="4" placeholder="Tell us about your dream trip... / រៀបរាប់ពីដំណើរកម្សាន្ត..." class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-emerald-500 transition"></textarea>
+                <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold text-base shadow-lg shadow-emerald-500/20 transition transform hover:-translate-y-0.5">
+                    <span class="en-text">Submit Trip Request</span>
+                    <span class="kh-text">បញ្ជូនសំណើដំណើរកម្សាន្ត</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-900 text-slate-400 py-12 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div>
+                <div class="flex items-center gap-2 text-lg font-bold font-heading text-white mb-3">
+                    <svg class="w-9 h-9 shrink-0" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="KhmerGlobe.Ultra+ logo" role="img">
+                        <defs>
+                            <linearGradient id="kgFooterGrad" x1="4" y1="4" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                                <stop offset="0" stop-color="#34d399"/>
+                                <stop offset="1" stop-color="#22d3ee"/>
+                            </linearGradient>
+                        </defs>
+                        <circle cx="20" cy="20" r="15" stroke="url(#kgFooterGrad)" stroke-width="2.5"/>
+                        <ellipse cx="20" cy="20" rx="6.5" ry="15" stroke="url(#kgFooterGrad)" stroke-width="2"/>
+                        <path d="M5 20H35M7.5 12.5H32.5M7.5 27.5H32.5" stroke="url(#kgFooterGrad)" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M3 28C14 38 32 30 36 11" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M36 4L39.5 11.5L32.5 11.5Z" fill="#fbbf24"/>
+                    </svg>
+                    KhmerGlobe<span class="text-amber-400">.Ultra+</span>
+                </div>
+                <p class="text-xs text-slate-500 leading-relaxed">Headquartered in Phnom Penh, Cambodia. Founded in 2001 by a BBU student. Now with 1,000+ shops and 10,000 destinations worldwide.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-3">Destinations</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#local-gems" class="hover:text-emerald-400 transition">Siem Reap - Angkor Wat</a></li>
+                    <li><a href="#local-gems" class="hover:text-emerald-400 transition">Phnom Penh Capital</a></li>
+                    <li><a href="#local-gems" class="hover:text-emerald-400 transition">Koh Kong Islands</a></li>
+                    <li><a href="#destinations" class="hover:text-emerald-400 transition">Vietnam, Laos & China</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-3">Company</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#about" class="hover:text-emerald-400 transition">Our Story - BBU 2001</a></li>
+                    <li><a href="#global-network" class="hover:text-emerald-400 transition">1,000+ Global Partner Shops</a></li>
+                    <li><a href="#contact" class="hover:text-emerald-400 transition">Contact Customer Support</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-slate-900 text-center text-xs text-slate-600">
+            &copy; 2026 KhmerGlobe.Ultra+ Co., Ltd. All rights reserved. Registered in Phnom Penh, Cambodia.
+        </div>
+    </footer>
+
+    <!-- Script Controllers for Lang and Theme -->
+    <script>
+        function toggleLanguage() {
+            const html = document.documentElement;
+            const currentLang = html.getAttribute('data-lang');
+            const newLang = currentLang === 'en' ? 'kh' : 'en';
+            html.setAttribute('data-lang', newLang);
+            document.getElementById('lang-label').innerText = newLang === 'en' ? 'ខ្មែរ' : 'EN';
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            if (newTheme === 'light') {
+                html.classList.remove('dark');
+                document.getElementById('theme-icon').innerText = '🌙';
+            } else {
+                html.classList.add('dark');
+                document.getElementById('theme-icon').innerText = '☀️';
+            }
+        }
+    </script>
+</body>
+</html>
